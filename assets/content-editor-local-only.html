@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AAAC Content Editor - Local Only</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .editor-shell { max-width: 1180px; margin: 0 auto; padding: 32px 18px 80px; }
+    .editor-header { margin: 34px 0 26px; }
+    .editor-header h1 { font-family: var(--font-title); font-size: clamp(3rem, 8vw, 7rem); line-height: .9; margin: 0 0 18px; text-transform: uppercase; }
+    .editor-note { color: var(--muted); max-width: 850px; line-height: 1.7; }
+    .editor-actions { display:flex; flex-wrap:wrap; gap:12px; margin: 22px 0 30px; }
+    .editor-section { margin: 22px 0; padding: 22px; border-radius: var(--radius-lg); }
+    .editor-section h2 { font-family: var(--font-title); font-size: clamp(2rem, 4vw, 3.4rem); text-transform: uppercase; margin: 0 0 16px; }
+    .editor-list { display:grid; gap:16px; }
+    .edit-card { padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: rgba(255,255,255,.045); }
+    .edit-card-header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+    .edit-card-header strong { color: var(--white); }
+    .edit-grid { display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .edit-field { display:flex; flex-direction:column; gap:7px; }
+    .edit-field.full { grid-column: 1 / -1; }
+    .edit-field label { font-size:.76rem; text-transform: uppercase; letter-spacing:.14em; color: var(--muted); }
+    .edit-field input, .edit-field textarea { width:100%; border:1px solid var(--border); border-radius:16px; background: rgba(0,0,0,.28); color: var(--white); padding:13px 14px; font: inherit; outline: none; }
+    .edit-field textarea { min-height: 130px; resize: vertical; }
+    .danger-btn { background: rgba(255,255,255,.05); color: var(--muted); border: 1px solid var(--border); border-radius: 999px; padding: 9px 12px; cursor:pointer; }
+    .danger-btn:hover { color: var(--white); border-color: rgba(255,70,110,.45); }
+    .mini-help { color: var(--muted); font-size:.9rem; line-height:1.6; }
+    .status { margin-top: 12px; color: var(--white); min-height: 24px; }
+    @media (max-width: 760px) { .edit-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="navbar">
+      <a class="brand" href="index.html" aria-label="Aeronautical Academy home">
+        <img src="assets/img/logo-white.png" alt="Aeronautical Academy logo">
+        <span class="brand-text"><strong>Aeronautical Academy</strong><span>Content Editor</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Back to Website</a>
+      </nav>
+    </header>
+
+    <main class="editor-shell">
+      <section class="editor-header">
+        <p class="eyebrow">Local only helper</p>
+        <h1>Content Editor</h1>
+        <p class="editor-note">Use this page to edit project cards, project articles, and board members without touching the main website code. After editing, click <strong>Download Updated Content File</strong>. Then replace the old file at <strong>assets/data/site-content.js</strong> with the downloaded file and redeploy the website.</p>
+        <div class="editor-actions">
+          <button class="btn btn-primary" id="downloadContentBtn" type="button">Download Updated Content File</button>
+          <button class="btn btn-outline" id="saveDraftBtn" type="button">Save Draft in This Browser</button>
+          <button class="btn btn-outline" id="loadOriginalBtn" type="button">Load Original Content</button>
+        </div>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="editor-section glass">
+        <h2>Projects</h2>
+        <p class="mini-help">Each project becomes one card on the home page and one article page. The image must be inside <strong>assets/img/</strong>. Example: <strong>assets/img/project-9.jpg</strong>. For article text, write one paragraph per line.</p>
+        <div class="editor-actions">
+          <button class="btn btn-primary" id="addProjectBtn" type="button">Add New Project</button>
+        </div>
+        <div id="projectsEditor" class="editor-list"></div>
+      </section>
+
+      <section class="editor-section glass">
+        <h2>Board of Officials</h2>
+        <p class="mini-help">These names appear on the About Us page. Profile photos are not used, as requested earlier.</p>
+        <div class="editor-actions">
+          <button class="btn btn-primary" id="addMemberBtn" type="button">Add Board Member</button>
+        </div>
+        <div id="boardEditor" class="editor-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/data/site-content.js"></script>
+  <script>
+    const originalProjects = JSON.parse(JSON.stringify(window.AAAC_PROJECTS || []));
+    const originalMembers = JSON.parse(JSON.stringify(window.AAAC_BOARD_MEMBERS || []));
+    let projects = loadDraft('aaacEditorProjects', originalProjects);
+    let members = loadDraft('aaacEditorMembers', originalMembers);
+
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const status = $('#status');
+
+    function loadDraft(key, fallback) {
+      try {
+        const saved = localStorage.getItem(key);
+        return saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(fallback));
+      } catch (error) {
+        return JSON.parse(JSON.stringify(fallback));
+      }
+    }
+
+    function setStatus(message) {
+      status.textContent = message;
+      setTimeout(() => { if (status.textContent === message) status.textContent = ''; }, 5000);
+    }
+
+    function slugify(text) {
+      return String(text || 'new-project')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '') || 'new-project';
+    }
+
+    function escapeHTML(value = '') {
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function renderProjects() {
+      $('#projectsEditor').innerHTML = projects.map((project, index) => `
+        <article class="edit-card">
+          <div class="edit-card-header">
+            <strong>${escapeHTML(project.no || index + 1)}. ${escapeHTML(project.title || 'Untitled Project')}</strong>
+            <button class="danger-btn" type="button" data-remove-project="${index}">Remove</button>
+          </div>
+          <div class="edit-grid">
+            <div class="edit-field"><label>Project Number</label><input data-project-field="no" data-index="${index}" value="${escapeHTML(project.no || '')}"></div>
+            <div class="edit-field"><label>Project ID / URL Slug</label><input data-project-field="id" data-index="${index}" value="${escapeHTML(project.id || '')}"></div>
+            <div class="edit-field full"><label>Project Title</label><input data-project-field="title" data-index="${index}" value="${escapeHTML(project.title || '')}"></div>
+            <div class="edit-field"><label>Image Path</label><input data-project-field="image" data-index="${index}" value="${escapeHTML(project.image || '')}"></div>
+            <div class="edit-field"><label>Date</label><input data-project-field="date" data-index="${index}" value="${escapeHTML(project.date || '')}"></div>
+            <div class="edit-field full"><label>Place</label><input data-project-field="place" data-index="${index}" value="${escapeHTML(project.place || '')}"></div>
+            <div class="edit-field full"><label>Short Summary / Project Impact</label><textarea data-project-field="summary" data-index="${index}">${escapeHTML(project.summary || '')}</textarea></div>
+            <div class="edit-field full"><label>Article Paragraphs - one paragraph per line</label><textarea data-project-field="body" data-index="${index}">${escapeHTML((project.body || []).join('\n'))}</textarea></div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function renderMembers() {
+      $('#boardEditor').innerHTML = members.map((member, index) => `
+        <article class="edit-card">
+          <div class="edit-card-header">
+            <strong>${escapeHTML(member.post || 'Post')} — ${escapeHTML(member.name || 'Name')}</strong>
+            <button class="danger-btn" type="button" data-remove-member="${index}">Remove</button>
+          </div>
+          <div class="edit-grid">
+            <div class="edit-field"><label>Post</label><input data-member-field="post" data-index="${index}" value="${escapeHTML(member.post || '')}"></div>
+            <div class="edit-field"><label>Name</label><input data-member-field="name" data-index="${index}" value="${escapeHTML(member.name || '')}"></div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function updateProject(index, field, value) {
+      if (field === 'body') {
+        projects[index][field] = value.split('\n').map(line => line.trim()).filter(Boolean);
+      } else {
+        projects[index][field] = value;
+        if (field === 'title' && !projects[index].id) projects[index].id = slugify(value);
+      }
+    }
+
+    function generateFileText() {
+      return `/*\n  AAAC EDITABLE CONTENT FILE\n  Generated from content-editor-local-only.html.\n  Replace assets/data/site-content.js with this downloaded file.\n*/\n\nwindow.AAAC_PROJECTS = ${JSON.stringify(projects, null, 2)};\n\nwindow.AAAC_BOARD_MEMBERS = ${JSON.stringify(members, null, 2)};\n`;
+    }
+
+    function downloadFile() {
+      const blob = new Blob([generateFileText()], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'site-content.js';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+      setStatus('Downloaded site-content.js. Replace assets/data/site-content.js with this file.');
+    }
+
+    document.addEventListener('input', (event) => {
+      const projectField = event.target.getAttribute('data-project-field');
+      const memberField = event.target.getAttribute('data-member-field');
+      const index = Number(event.target.getAttribute('data-index'));
+      if (projectField) updateProject(index, projectField, event.target.value);
+      if (memberField) members[index][memberField] = event.target.value;
+    });
+
+    document.addEventListener('click', (event) => {
+      const removeProject = event.target.getAttribute('data-remove-project');
+      const removeMember = event.target.getAttribute('data-remove-member');
+      if (removeProject !== null) {
+        projects.splice(Number(removeProject), 1);
+        renderProjects();
+      }
+      if (removeMember !== null) {
+        members.splice(Number(removeMember), 1);
+        renderMembers();
+      }
+    });
+
+    $('#addProjectBtn').addEventListener('click', () => {
+      const nextNo = String(projects.length + 1);
+      projects.push({
+        id: `new-project-${nextNo}`,
+        no: nextNo,
+        title: 'New Project Title',
+        image: `assets/img/project-${nextNo}.jpg`,
+        date: '2026',
+        place: 'Ananda College',
+        summary: 'Write a short summary here.',
+        body: ['Write the first paragraph here.', 'Write the second paragraph here.']
+      });
+      renderProjects();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    $('#addMemberBtn').addEventListener('click', () => {
+      members.push({ post: 'New Post', name: 'New Member Name' });
+      renderMembers();
+    });
+
+    $('#saveDraftBtn').addEventListener('click', () => {
+      localStorage.setItem('aaacEditorProjects', JSON.stringify(projects));
+      localStorage.setItem('aaacEditorMembers', JSON.stringify(members));
+      setStatus('Draft saved in this browser.');
+    });
+
+    $('#loadOriginalBtn').addEventListener('click', () => {
+      if (!confirm('Load the original content from site-content.js and clear your draft?')) return;
+      localStorage.removeItem('aaacEditorProjects');
+      localStorage.removeItem('aaacEditorMembers');
+      projects = JSON.parse(JSON.stringify(originalProjects));
+      members = JSON.parse(JSON.stringify(originalMembers));
+      renderProjects();
+      renderMembers();
+      setStatus('Original content loaded.');
+    });
+
+    $('#downloadContentBtn').addEventListener('click', downloadFile);
+
+    renderProjects();
+    renderMembers();
+  </script>
+</body>
+</html>
