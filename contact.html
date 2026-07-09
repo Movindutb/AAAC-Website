@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | Aeronautical Academy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="navbar">
+      <a class="brand" href="index.html" aria-label="Aeronautical Academy home">
+        <img src="assets/img/logo-white.png" alt="Aeronautical Academy logo">
+        <span class="brand-text"><strong>Aeronautical Academy</strong><span>of Ananda College</span></span>
+      </a>
+      <button id="mobileToggle" class="mobile-toggle" aria-label="Open navigation">☰</button>
+      <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+        <a data-nav="index.html" href="index.html">Home</a>
+        <a data-nav="about.html" href="about.html">About Us</a>
+        <a href="index.html#projects">Projects</a>
+        <a data-nav="join.html" href="join.html">Join Us</a>
+        <a data-nav="contact.html" href="contact.html">Contact Us</a>
+        <a class="btn btn-primary" href="join.html">Join Force</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Get in touch</p>
+        <h1 class="page-title">Contact Us</h1>
+        <p class="page-subtitle">Send a message to the Aeronautical Academy. The form is wired to send submissions to the club email address.</p>
+      </section>
+
+      <section class="contact-layout">
+        <article class="contact-form-card glass">
+          <h2 class="section-title">Send Message</h2>
+          <div class="title-line"></div>
+          <form id="contactForm" action="https://formsubmit.co/slcoderyt@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New message from AAAC website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="thanks.html">
+            <div class="form-grid">
+              <div>
+                <label for="name">Full Name</label>
+                <input id="name" name="name" type="text" required>
+              </div>
+              <div>
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" required>
+              </div>
+              <div class="full">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" required>
+              </div>
+              <div class="full">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send Message <span aria-hidden="true">✈</span></button>
+            </div>
+            <p class="notice">Important: On the very first test submission, FormSubmit may send an activation email to the club inbox. Open that email once and confirm it. After that, messages will arrive normally.</p>
+          </form>
+        </article>
+
+        <aside class="contact-details">
+          <div class="detail-card glass"><strong>Email</strong><span>slcoderyt@gmail.com</span></div>
+          <div class="detail-card glass"><strong>Location</strong><span>Ananda College, Colombo 10</span></div>
+          <div class="detail-card glass"><strong>Follow</strong><span>Facebook · Instagram · YouTube</span></div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>AAAC©2026</span>
+      <span>Aspiring to Conquer the Sky</span>
+    </footer>
+  </div>
+  <script src="assets/data/site-content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

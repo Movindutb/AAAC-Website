@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join Force | Aeronautical Academy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="navbar">
+      <a class="brand" href="index.html" aria-label="Aeronautical Academy home">
+        <img src="assets/img/logo-white.png" alt="Aeronautical Academy logo">
+        <span class="brand-text"><strong>Aeronautical Academy</strong><span>of Ananda College</span></span>
+      </a>
+      <button id="mobileToggle" class="mobile-toggle" aria-label="Open navigation">☰</button>
+      <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+        <a data-nav="index.html" href="index.html">Home</a>
+        <a data-nav="about.html" href="about.html">About Us</a>
+        <a href="index.html#projects">Projects</a>
+        <a data-nav="join.html" href="join.html">Join Us</a>
+        <a data-nav="contact.html" href="contact.html">Contact Us</a>
+        <a class="btn btn-primary" href="join.html">Join Force</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Membership Application</p>
+        <h1 class="page-title">Join Force</h1>
+        <p class="page-subtitle">Fill the online application and download a clean PDF copy of your submission. Print the PDF, get the necessary signatures and hand it over to the academy.</p>
+      </section>
+
+      <section class="form-layout">
+        <article class="form-card glass">
+          <div class="form-intro">
+            <h2 class="section-title">Application Form</h2>
+            <div class="title-line"></div>
+            <p>This digital form follows the membership application information shown in your uploaded reference images.</p>
+          </div>
+
+          <form id="joinForm">
+            <h3 class="form-section-title">Student’s Information</h3>
+            <div class="form-grid">
+              <div class="full">
+                <label for="studentFullName">Full Name</label>
+                <input id="studentFullName" name="studentFullName" type="text" required>
+              </div>
+              <div class="full">
+                <label for="studentInitials">Name with Initials</label>
+                <input id="studentInitials" name="studentInitials" type="text" required>
+              </div>
+              <div>
+                <label for="dob">Date of Birth</label>
+                <input id="dob" name="dob" type="date" required>
+              </div>
+              <div>
+                <label for="grade">Grade</label>
+                <input id="grade" name="grade" type="text" placeholder="Example: 10" required>
+              </div>
+              <div>
+                <label for="admissionNumber">Admission Number</label>
+                <input id="admissionNumber" name="admissionNumber" type="text" required>
+              </div>
+              <div>
+                <label for="hosteller">Are you a hosteller?</label>
+                <select id="hosteller" name="hosteller" required>
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+              <div class="full">
+                <label for="studentId">National / Postal Identity Card Number</label>
+                <input id="studentId" name="studentId" type="text">
+              </div>
+              <div class="full">
+                <label for="studentEmail">E-mail Address</label>
+                <input id="studentEmail" name="studentEmail" type="email" required>
+              </div>
+            </div>
+
+            <h3 class="form-section-title">Father’s Information</h3>
+            <div class="form-grid">
+              <div class="full"><label for="fatherName">Full Name</label><input id="fatherName" name="fatherName" type="text"></div>
+              <div><label for="fatherNic">NIC Number</label><input id="fatherNic" name="fatherNic" type="text"></div>
+              <div><label for="fatherOccupation">Occupation</label><input id="fatherOccupation" name="fatherOccupation" type="text"></div>
+              <div class="full"><label for="fatherAddress">Residential Address</label><textarea id="fatherAddress" name="fatherAddress"></textarea></div>
+              <div class="full"><label for="fatherContact">Contact Number</label><input id="fatherContact" name="fatherContact" type="tel"></div>
+            </div>
+
+            <h3 class="form-section-title">Mother’s Information</h3>
+            <div class="form-grid">
+              <div class="full"><label for="motherName">Full Name</label><input id="motherName" name="motherName" type="text"></div>
+              <div><label for="motherNic">NIC Number</label><input id="motherNic" name="motherNic" type="text"></div>
+              <div><label for="motherOccupation">Occupation</label><input id="motherOccupation" name="motherOccupation" type="text"></div>
+              <div class="full"><label for="motherAddress">Residential Address</label><textarea id="motherAddress" name="motherAddress"></textarea></div>
+              <div class="full"><label for="motherContact">Contact Number</label><input id="motherContact" name="motherContact" type="tel"></div>
+            </div>
+
+            <h3 class="form-section-title">Guardian’s Information</h3>
+            <div class="form-grid">
+              <div class="full"><label for="guardianName">Full Name</label><input id="guardianName" name="guardianName" type="text"></div>
+              <div><label for="guardianNic">NIC Number</label><input id="guardianNic" name="guardianNic" type="text"></div>
+              <div><label for="guardianOccupation">Occupation</label><input id="guardianOccupation" name="guardianOccupation" type="text"></div>
+              <div class="full"><label for="guardianAddress">Address</label><textarea id="guardianAddress" name="guardianAddress"></textarea></div>
+              <div class="full"><label for="guardianContact">Contact Number</label><input id="guardianContact" name="guardianContact" type="tel"></div>
+            </div>
+
+            <h3 class="form-section-title">Emergency Contact</h3>
+            <div class="form-grid">
+              <div><label for="emergencyName">Full Name</label><input id="emergencyName" name="emergencyName" type="text" required></div>
+              <div><label for="emergencyContact">Contact Number</label><input id="emergencyContact" name="emergencyContact" type="tel" required></div>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Submit & Download PDF <span aria-hidden="true">↓</span></button>
+              <button id="downloadPdfBtn" class="btn btn-outline" type="button">Download PDF Only</button>
+              <button class="btn btn-outline" type="reset">Clear</button>
+            </div>
+            <p class="notice">Your application data is not sent to a server in this starter version. The browser generates the PDF on your device and saves a draft in this browser only.</p>
+          </form>
+        </article>
+
+        <aside class="info-card glass">
+          <h2 class="section-title">How it Works</h2>
+          <div class="title-line"></div>
+          <p>1. Fill the form carefully.<br>2. Click “Submit & Download PDF”.<br>3. Print the generated PDF.<br>4. Sign and hand it over to the academy.</p>
+          <ul class="mini-list">
+            <li>PDF uses the official membership header image.</li>
+            <li>The form follows the student, parent, guardian and emergency contact sections.</li>
+            <li>You can replace fields later based on the final school format.</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>AAAC©2026</span>
+      <span>Aspiring to Conquer the Sky</span>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
+  <script src="assets/data/site-content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Aeronautical Academy</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="navbar">
+      <a class="brand" href="index.html" aria-label="Aeronautical Academy home">
+        <img src="assets/img/logo-white.png" alt="Aeronautical Academy logo">
+        <span class="brand-text"><strong>Aeronautical Academy</strong><span>of Ananda College</span></span>
+      </a>
+      <button id="mobileToggle" class="mobile-toggle" aria-label="Open navigation">☰</button>
+      <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+        <a data-nav="index.html" href="index.html">Home</a>
+        <a data-nav="about.html" href="about.html">About Us</a>
+        <a href="index.html#projects">Projects</a>
+        <a data-nav="join.html" href="join.html">Join Us</a>
+        <a data-nav="contact.html" href="contact.html">Contact Us</a>
+        <a class="btn btn-primary" href="join.html">Join Force</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <p class="eyebrow">Who we are</p>
+        <h1 class="page-title">About Us</h1>
+        <p class="page-subtitle">A student-led aviation society committed to building knowledge, discipline, innovation and leadership through aviation education.</p>
+      </section>
+
+      <section class="about-grid">
+        <article class="about-copy glass">
+          <h2 class="section-title">Aeronautical Academy</h2>
+          <div class="title-line"></div>
+          <p>The Aeronautical Academy of Ananda College is one of the college’s respected student societies, recognized for its contribution to aviation education within and beyond the school community.</p>
+          <p>Through lectures, workshops, field visits and hands-on projects, the academy provides students with opportunities to understand aviation fundamentals, explore future career paths and develop the confidence required to lead and innovate.</p>
+          <p>Our mission is to inspire young aviation enthusiasts and guide them towards becoming future professionals who can contribute to Sri Lanka’s aviation sector and the global aerospace community.</p>
+        </article>
+        <div class="about-visual glass engine-card" aria-label="Interactive 360 degree turbo engine line art model">
+          <div class="engine-stage" id="engineStage">
+            <svg class="engine-svg" viewBox="0 0 620 620" role="img" aria-label="Burgundy line-art aircraft turbo engine model">
+              <g class="engine-outer">
+                <ellipse cx="310" cy="310" rx="230" ry="176"></ellipse>
+                <ellipse cx="310" cy="310" rx="192" ry="146"></ellipse>
+                <ellipse cx="310" cy="310" rx="152" ry="112"></ellipse>
+                <path d="M96 316 C100 214 188 134 310 134 C432 134 520 214 524 316"></path>
+                <path d="M110 356 C166 456 454 456 510 356"></path>
+                <path d="M119 244 C55 251 48 371 119 380"></path>
+                <path d="M501 244 C565 251 572 371 501 380"></path>
+              </g>
+              <g class="engine-fan">
+                <circle cx="310" cy="310" r="28"></circle>
+                <path d="M310 282 C333 213 359 174 400 142 C397 205 370 247 324 291Z"></path>
+                <path d="M338 306 C407 329 446 355 478 396 C415 393 373 366 329 320Z"></path>
+                <path d="M314 338 C291 407 265 446 224 478 C227 415 254 373 300 329Z"></path>
+                <path d="M282 314 C213 291 174 265 142 224 C205 227 247 254 291 300Z"></path>
+                <path d="M291 291 C245 231 228 189 232 132 C283 169 307 211 307 281Z"></path>
+                <path d="M329 291 C389 245 431 228 488 232 C451 283 409 307 339 307Z"></path>
+                <path d="M329 329 C375 389 392 431 388 488 C337 451 313 409 313 339Z"></path>
+                <path d="M291 329 C231 375 189 392 132 388 C169 337 211 313 281 313Z"></path>
+              </g>
+              <g class="engine-lines">
+                <line x1="310" y1="84" x2="310" y2="536"></line>
+                <line x1="84" y1="310" x2="536" y2="310"></line>
+                <line x1="150" y1="150" x2="470" y2="470"></line>
+                <line x1="470" y1="150" x2="150" y2="470"></line>
+                <path d="M118 422 C188 508 430 508 502 422"></path>
+                <path d="M118 198 C188 112 430 112 502 198"></path>
+              </g>
+            </svg>
+          </div>
+          <span class="engine-hint">DRAG 360°</span>
+        </div>
+      </section>
+
+      <section class="board-panel glass">
+        <p class="eyebrow">2026 / 27</p>
+        <h2 class="section-title">Board of Officials</h2>
+        <div class="title-line"></div>
+        <div id="boardGrid" class="board-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>AAAC©2026</span>
+      <span>Aspiring to Conquer the Sky</span>
+    </footer>
+  </div>
+  <script src="assets/data/site-content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

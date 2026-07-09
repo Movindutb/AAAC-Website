@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aeronautical Academy of Ananda College</title>
+  <meta name="description" content="Official website concept for the Aeronautical Academy of Ananda College.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="navbar">
+      <a class="brand" href="index.html" aria-label="Aeronautical Academy home">
+        <img src="assets/img/logo-white.png" alt="Aeronautical Academy logo">
+        <span class="brand-text"><strong>Aeronautical Academy</strong><span>of Ananda College</span></span>
+      </a>
+      <button id="mobileToggle" class="mobile-toggle" aria-label="Open navigation">☰</button>
+      <nav id="navLinks" class="nav-links" aria-label="Main navigation">
+        <a data-nav="index.html" href="index.html">Home</a>
+        <a data-nav="about.html" href="about.html">About Us</a>
+        <a href="index.html#projects">Projects</a>
+        <a data-nav="join.html" href="join.html">Join Us</a>
+        <a data-nav="contact.html" href="contact.html">Contact Us</a>
+        <a class="btn btn-primary" href="join.html">Join Force</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Aeronautical Academy of Ananda College</p>
+            <h1>Aspiring to Conquer the Sky</h1>
+            <p>Empowering young minds with aviation knowledge, practical exposure, innovation and leadership for the next generation of aviators.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">Explore Projects <span aria-hidden="true">→</span></a>
+              <a class="btn btn-outline" href="join.html">Join Force</a>
+            </div>
+          </div>
+
+          <div class="hero-visual fighter-hud-hero" aria-label="Interactive fighter jet HUD visual">
+            <div id="f16Wrap" class="f16-wrap hud-wrap">
+              <svg class="f16-svg hud-svg" viewBox="0 0 960 620" role="img" aria-label="Burgundy interactive fighter jet heads-up display">
+                <defs>
+                  <linearGradient id="hudFade" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ff315f" stop-opacity="0.88"/>
+                    <stop offset="0.55" stop-color="#bd1839" stop-opacity="0.72"/>
+                    <stop offset="1" stop-color="#6d0d20" stop-opacity="0.36"/>
+                  </linearGradient>
+                  <radialGradient id="hudGlow" cx="50%" cy="48%" r="55%">
+                    <stop offset="0" stop-color="#bd1839" stop-opacity="0.22"/>
+                    <stop offset="0.55" stop-color="#bd1839" stop-opacity="0.08"/>
+                    <stop offset="1" stop-color="#bd1839" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+
+                <rect class="hud-glow-bg" x="90" y="48" width="780" height="524" rx="34"/>
+
+                <g class="hud-grid" aria-hidden="true">
+                  <path d="M112 505 H848"/>
+                  <path d="M154 535 H806"/>
+                  <path d="M208 565 H752"/>
+                  <path d="M480 340 V585"/>
+                  <path d="M380 360 L260 585"/>
+                  <path d="M580 360 L700 585"/>
+                  <path d="M292 402 H668"/>
+                  <path d="M246 452 H714"/>
+                  <path d="M180 585 L480 340 L780 585"/>
+                </g>
+
+                <g class="hud-reticle">
+                  <circle cx="480" cy="286" r="214"/>
+                  <circle cx="480" cy="286" r="148"/>
+                  <circle cx="480" cy="286" r="74"/>
+                  <path d="M480 72 V132"/>
+                  <path d="M480 440 V500"/>
+                  <path d="M266 286 H326"/>
+                  <path d="M634 286 H694"/>
+                  <path d="M328 134 A214 214 0 0 1 632 134"/>
+                  <path d="M328 438 A214 214 0 0 0 632 438"/>
+                </g>
+
+                <g class="hud-scan">
+                  <path d="M480 286 L808 126"/>
+                  <path d="M480 286 L736 505"/>
+                </g>
+
+                <g class="hud-lock">
+                  <path d="M380 178 H430"/>
+                  <path d="M530 178 H580"/>
+                  <path d="M380 178 V228"/>
+                  <path d="M580 178 V228"/>
+                  <path d="M380 394 V344"/>
+                  <path d="M580 394 V344"/>
+                  <path d="M380 394 H430"/>
+                  <path d="M530 394 H580"/>
+                </g>
+
+                <g class="hud-data hud-data-left">
+                  <text x="112" y="126">VECTOR</text>
+                  <path d="M112 148 H255"/>
+                  <path d="M112 172 H214"/>
+                  <path d="M112 196 H238"/>
+                  <text x="112" y="254">SPD 720</text>
+                  <path d="M112 276 H220"/>
+                  <path d="M112 300 H184"/>
+                </g>
+
+                <g class="hud-data hud-data-right">
+                  <text x="706" y="126">TARGET</text>
+                  <path d="M706 148 H848"/>
+                  <path d="M742 172 H848"/>
+                  <path d="M720 196 H848"/>
+                  <text x="706" y="254">ALT 18.2</text>
+                  <path d="M738 276 H848"/>
+                  <path d="M772 300 H848"/>
+                </g>
+
+                <g class="hud-bottom-data">
+                  <path d="M328 552 H632"/>
+                  <path d="M378 572 H582"/>
+                  <text x="480" y="594" text-anchor="middle">HUD ACTIVE / CURSOR TRACKING</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <button class="hero-scroll" type="button" data-scroll-target="#projects">SCROLL DOWN ↓</button>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="home-combo glass">
+          <div class="mission-panel">
+            <div class="icon-orb" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="2"><path d="M24 44c11 0 20-9 20-20S35 4 24 4 4 13 4 24s9 20 20 20Z"/><path d="M24 34c5.5 0 10-4.5 10-10S29.5 14 24 14 14 18.5 14 24s4.5 10 10 10Z"/><path d="M24 24 38 10"/><path d="M36 10h4v4"/></svg>
+            </div>
+            <h2 class="section-title">Our Mission</h2>
+            <div class="title-line"></div>
+            <p>To inspire and empower students by providing quality aviation education, practical exposure and leadership opportunities while fostering innovation, teamwork and a strong passion for the advancement of aviation in Sri Lanka and beyond.</p>
+          </div>
+
+          <div class="projects-panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="section-title">Our Projects</h2>
+                <div class="title-line"></div>
+              </div>
+              <div class="carousel-controls">
+                <button id="projectPrev" class="circle-btn" aria-label="Previous projects">‹</button>
+                <button id="projectNext" class="circle-btn" aria-label="Next projects">›</button>
+              </div>
+            </div>
+            <div id="projectRail" class="project-rail" aria-label="Project carousel"></div>
+          </div>
+        </div>
+
+        <div class="join-strip glass">
+          <div class="icon-orb" aria-hidden="true">
+            <svg width="42" height="42" viewBox="0 0 48 48" fill="none" stroke="white" stroke-width="2"><path d="M17 21a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/><path d="M31 23a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"/><path d="M5 42c1.5-9 6-14 12-14s10.5 5 12 14"/><path d="M24 39c1.8-6.5 5.4-10 10-10 4.8 0 8.2 4 9.5 10"/></svg>
+          </div>
+          <div>
+            <h2>Join Force</h2>
+            <p>Be a part of the mission. Join the Aeronautical Academy and take your first step towards the skies.</p>
+          </div>
+          <a class="btn btn-primary" href="join.html">Join Now <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>AAAC©2026</span>
+      <span>Aspiring to Conquer the Sky</span>
+    </footer>
+  </div>
+
+  <script src="assets/data/site-content.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
