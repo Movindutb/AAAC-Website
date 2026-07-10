@@ -136,10 +136,6 @@ window.AAAC_BOARD_MEMBERS = [
     "name": "Sades Sandeepa"
   },
   {
-    "post": "Chief Editor",
-    "name": "Shaveen Guruge"
-  },
-  {
     "post": "Chief Organizer",
     "name": "Bunuja Deegayu"
   },
