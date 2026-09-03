@@ -1868,3 +1868,10 @@ textarea:focus {
     height: 38px;
   }
 }
+
+/* Small title-size adjustment for compact quiz popup */
+.aaac-popup.aaac-popup-compact .aaac-popup-title {
+  font-size: clamp(19px, 1.65vw, 26px);
+  line-height: 1.05;
+  letter-spacing: .035em;
+}
