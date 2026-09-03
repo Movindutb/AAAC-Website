@@ -698,7 +698,7 @@ document.addEventListener('DOMContentLoaded', init);
 
         <div class="aaac-popup-footer">
           <span class="aaac-popup-small-text">AAAC 2026</span>
-          <a href="join.html" class="aaac-popup-link">Join Force →</a>
+          <a href="#" class="aaac-popup-link">View Quiz →</a>
         </div>
       </div>
     `;
