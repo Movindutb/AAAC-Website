@@ -654,3 +654,97 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+/* =========================================================
+   QUIZ ROUND 1 POPUP NOTIFICATION
+   Appears every time the website is opened
+   ========================================================= */
+
+(function () {
+  function createQuizPopup() {
+    const popup = document.createElement("div");
+    popup.className = "aaac-popup";
+    popup.setAttribute("role", "dialog");
+    popup.setAttribute("aria-label", "Quiz Round 1 notification");
+
+    popup.innerHTML = `
+      <div class="aaac-popup-inner">
+        <div class="aaac-popup-mini">
+          <span class="aaac-popup-mini-dot"></span>
+          <span>Quiz Round 1 is here</span>
+          <span>↗</span>
+        </div>
+
+        <div class="aaac-popup-top">
+          <div class="aaac-popup-badge">
+            <span class="aaac-popup-badge-dot"></span>
+            Announcement
+          </div>
+
+          <div class="aaac-popup-actions">
+            <button class="aaac-popup-icon-btn aaac-popup-minimize" type="button" aria-label="Minimize notification">−</button>
+            <button class="aaac-popup-icon-btn aaac-popup-close" type="button" aria-label="Close notification">×</button>
+          </div>
+        </div>
+
+        <h3 class="aaac-popup-title">Quiz Round <span>1</span> is here.</h3>
+
+        <div class="aaac-popup-line"></div>
+
+        <p class="aaac-popup-desc">
+          The first round of the Aeronautical Academy quiz is now ready for participants.
+          Get prepared to test your aviation knowledge, quick thinking, and passion for conquering the sky.
+        </p>
+
+        <div class="aaac-popup-footer">
+          <span class="aaac-popup-small-text">AAAC 2026</span>
+          <a href="join.html" class="aaac-popup-link">Join Force →</a>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    const closeBtn = popup.querySelector(".aaac-popup-close");
+    const minimizeBtn = popup.querySelector(".aaac-popup-minimize");
+
+    setTimeout(function () {
+      popup.classList.add("show");
+    }, 700);
+
+    closeBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      popup.classList.remove("show");
+
+      setTimeout(function () {
+        popup.remove();
+      }, 500);
+    });
+
+    minimizeBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      popup.classList.add("minimized");
+    });
+
+    popup.addEventListener("click", function () {
+      if (popup.classList.contains("minimized")) {
+        popup.classList.remove("minimized");
+      }
+    });
+
+    popup.addEventListener("mousemove", function (event) {
+      const rect = popup.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+      popup.style.setProperty("--popup-x", x + "%");
+      popup.style.setProperty("--popup-y", y + "%");
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", createQuizPopup);
+  } else {
+    createQuizPopup();
+  }
+})();
