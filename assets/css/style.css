@@ -2095,3 +2095,117 @@ textarea:focus {
 .aaac-popup.aaac-popup-aerogene .aaac-popup-body {
   padding-right: 0;
 }
+
+/* =========================================================
+   AEROGENE POPUP FINAL TEXT/LOGO LAYOUT
+   Logo above message, all-caps quiz text, close top-right
+   ========================================================= */
+
+.aaac-popup.aaac-popup-aerogene {
+  width: min(390px, calc(100vw - 34px));
+  border-radius: 20px;
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-inner {
+  position: relative;
+  padding: 14px 44px 15px 15px;
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-announcement {
+  margin-bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.58);
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-speaker {
+  width: 12px;
+  height: 12px;
+  stroke: rgba(255,255,255,.58);
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-body {
+  position: relative;
+  z-index: 3;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-aerogene-logo {
+  width: 100px;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 1px;
+  filter:
+    drop-shadow(0 0 12px rgba(176,0,40,.28))
+    drop-shadow(0 0 22px rgba(0,0,0,.42));
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-message {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-link {
+  margin-top: 4px;
+  height: 33px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-icon-btn.aaac-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 19px;
+  z-index: 5;
+}
+
+/* Make sure old popup structures stay hidden */
+.aaac-popup.aaac-popup-aerogene .aaac-popup-main,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-content,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-right,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-title,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-badge,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-desc,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-line,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-footer,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-mini,
+.aaac-popup.aaac-popup-aerogene .aaac-popup-minimize {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  .aaac-popup.aaac-popup-aerogene {
+    width: calc(100vw - 32px);
+  }
+
+  .aaac-popup.aaac-popup-aerogene .aaac-popup-aerogene-logo {
+    width: 92px;
+    max-height: 46px;
+  }
+
+  .aaac-popup.aaac-popup-aerogene .aaac-popup-message {
+    font-size: 16px;
+  }
+}
