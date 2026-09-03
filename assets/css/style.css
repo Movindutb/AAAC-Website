@@ -2052,3 +2052,11 @@ textarea:focus {
     font-size: 10.5px;
   }
 }
+/* Aerogene logo exact-fit adjustment inside quiz popup */
+.aaac-popup-aerogene-logo {
+  width: 92px;
+  height: auto;
+  max-height: 46px;
+  object-fit: contain;
+  object-position: center;
+}
