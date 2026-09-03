@@ -2209,3 +2209,31 @@ textarea:focus {
     font-size: 16px;
   }
 }
+/* =========================================================
+   AEROGENE POPUP LOGO ENHANCEMENT
+   Slightly bigger and visually bolder logo
+   ========================================================= */
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-aerogene-logo {
+  width: 112px;
+  max-height: 56px;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  margin-bottom: 3px;
+  opacity: 1;
+  filter:
+    brightness(1.18)
+    contrast(1.2)
+    drop-shadow(0 0 10px rgba(255,255,255,.18))
+    drop-shadow(0 0 18px rgba(176,0,40,.42))
+    drop-shadow(0 0 30px rgba(0,0,0,.55));
+}
+
+/* Mobile adjustment */
+@media (max-width: 520px) {
+  .aaac-popup.aaac-popup-aerogene .aaac-popup-aerogene-logo {
+    width: 102px;
+    max-height: 52px;
+  }
+}
