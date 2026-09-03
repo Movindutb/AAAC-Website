@@ -2060,3 +2060,38 @@ textarea:focus {
   object-fit: contain;
   object-position: center;
 }
+/* =========================================================
+   SMALL POPUP REFINEMENT
+   Logo +3/4% bigger and close button moved to top-right
+   ========================================================= */
+
+.aaac-popup.aaac-popup-aerogene .aaac-popup-inner {
+  position: relative;
+  padding: 15px 46px 15px 15px;
+}
+
+/* Increase Aerogene'26 logo slightly */
+.aaac-popup.aaac-popup-aerogene .aaac-popup-aerogene-logo {
+  width: 96px;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Move close button to the popup's top-right corner */
+.aaac-popup.aaac-popup-aerogene .aaac-popup-icon-btn.aaac-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 19px;
+  z-index: 5;
+}
+
+/* Since close button is now floating, keep body clean */
+.aaac-popup.aaac-popup-aerogene .aaac-popup-body {
+  padding-right: 0;
+}
