@@ -656,8 +656,8 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 /* =========================================================
-   QUIZ ROUND 1 POPUP NOTIFICATION
-   Works with popup HTML placed inside the page
+   QUIZ ROUND 1 COMPACT POPUP NOTIFICATION
+   Close button only + glass shine effect
    ========================================================= */
 
 (function () {
@@ -667,31 +667,21 @@ document.addEventListener('DOMContentLoaded', init);
     if (!popup) return;
 
     const closeBtn = popup.querySelector(".aaac-popup-close");
-    const minimizeBtn = popup.querySelector(".aaac-popup-minimize");
 
     setTimeout(function () {
       popup.classList.add("show");
     }, 700);
 
-    closeBtn.addEventListener("click", function (event) {
-      event.stopPropagation();
-      popup.classList.remove("show");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        popup.classList.remove("show");
 
-      setTimeout(function () {
-        popup.style.display = "none";
-      }, 500);
-    });
-
-    minimizeBtn.addEventListener("click", function (event) {
-      event.stopPropagation();
-      popup.classList.add("minimized");
-    });
-
-    popup.addEventListener("click", function () {
-      if (popup.classList.contains("minimized")) {
-        popup.classList.remove("minimized");
-      }
-    });
+        setTimeout(function () {
+          popup.style.display = "none";
+        }, 500);
+      });
+    }
 
     popup.addEventListener("mousemove", function (event) {
       const rect = popup.getBoundingClientRect();
